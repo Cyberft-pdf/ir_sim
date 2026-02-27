@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% for name, s in scenarios.items() %}
+  <div class="card">
+    <div class="row" style="justify-content:space-between;">
+      <div>
+        <h3 style="margin:0;">{{ s.title }}</h3>
+        <div class="muted"><code>{{ name }}</code></div>
+      </div>
+      <div>
+        <a class="btn" href="{{ url_for('run_scenario', name=name) }}">Run</a>
+      </div>
+    </div>
+    <p>{{ s.description }}</p>
+
+    {% if name in defaults %}
+      <div class="muted">Default parametry: <code>{{ defaults[name] }}</code></div>
+    {% endif %}
+  </div>
+{% endfor %}
+{% endblock %}

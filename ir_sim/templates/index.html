@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div><b>Poslední běh</b>: <span class="pill">{{ last_run.status }}</span></div>
+  <div class="muted">{{ last_run.ts or "" }}</div>
+  <div>{{ last_run.message }}</div>
+</div>
+
+<div class="row">
+  <div class="card" style="min-width:220px;">
+    <div class="muted">Incidenty (posledních 50)</div>
+    <div style="font-size:28px;"><b>{{ incidents|length }}</b></div>
+  </div>
+  <div class="card" style="min-width:220px;">
+    <div class="muted">Události (posledních 50)</div>
+    <div style="font-size:28px;"><b>{{ events|length }}</b></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Rychlé spuštění</h3>
+  <div class="row">
+    <a class="btn" href="{{ url_for('run_scenario', name='auth_burst') }}">Spustit auth_burst</a>
+    <a class="btn" href="{{ url_for('run_scenario', name='beacon') }}">Spustit beacon</a>
+  </div>
+  <p class="muted">Scénáře jsou bezpečné simulace (žádné útoky).</p>
+</div>
+{% endblock %}

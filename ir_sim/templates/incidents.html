@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not incidents %}
+  <p>Zatím žádné incidenty. Spusť scénář.</p>
+{% endif %}
+
+{% for inc in incidents %}
+  <div class="card">
+    <div class="row" style="justify-content:space-between;">
+      <div>
+        <span class="pill">{{ inc.severity }}</span>
+        <span class="pill">{{ inc.status }}</span>
+        <span class="pill"><code>{{ inc.rule_id }}</code></span>
+        <h3 style="margin:6px 0;">{{ inc.title }}</h3>
+        <div class="muted">{{ inc.created_ts }}</div>
+        <div class="muted">ID: <code>{{ inc.id }}</code></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a class="btn" href="{{ url_for('incident_detail', inc_id=inc.id) }}">Detail</a>
+        <a class="btn" href="{{ url_for('run_playbook', inc_id=inc.id, name='collect_artifacts') }}">Playbook: collect</a>
+        <a class="btn" href="{{ url_for('run_playbook', inc_id=inc.id, name='mock_block_indicator') }}">Playbook: mock block</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

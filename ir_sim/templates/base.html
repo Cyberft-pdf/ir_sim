@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{ title or app_name }}</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 14px; margin: 12px 0; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 8px 12px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: #111; }
+    .btn:hover { background: #f4f4f4; }
+    pre { background: #f6f6f6; border-radius: 10px; padding: 12px; overflow: auto; }
+    code { background: #f6f6f6; border-radius: 8px; padding: 2px 6px; }
+    .pill { display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid #ccc; font-size: 12px; }
+    .muted { color:#666; }
+  </style>
+</head>
+<body>
+  <h1>{{ app_name }}</h1>
+  <div class="row">
+    <a class="btn" href="{{ url_for('index') }}">Dashboard</a>
+    <a class="btn" href="{{ url_for('scenarios') }}">Scénáře</a>
+    <a class="btn" href="{{ url_for('incidents') }}">Incidenty</a>
+    <a class="btn" href="{{ url_for('events') }}">Události</a>
+  </div>
+  <hr/>
+  {% block content %}{% endblock %}
+</body>
+</html>

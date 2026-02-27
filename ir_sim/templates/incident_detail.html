@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <span class="pill">{{ incident.severity }}</span>
+  <span class="pill">{{ incident.status }}</span>
+  <span class="pill"><code>{{ incident.rule_id }}</code></span>
+  <h2 style="margin:6px 0;">{{ incident.title }}</h2>
+  <div class="muted">{{ incident.created_ts }}</div>
+  <div class="muted">ID: <code>{{ incident.id }}</code></div>
+</div>
+
+<div class="card">
+  <h3>Akce (playbooky)</h3>
+  <div class="row">
+    <a class="btn" href="{{ url_for('run_playbook', inc_id=incident.id, name='collect_artifacts') }}">Spustit collect_artifacts</a>
+    <a class="btn" href="{{ url_for('run_playbook', inc_id=incident.id, name='mock_block_indicator') }}">Spustit mock_block_indicator</a>
+  </div>
+  <pre>{{ incident.actions | tojson(indent=2) }}</pre>
+</div>
+
+<div class="card">
+  <h3>Evidence</h3>
+  <pre>{{ incident.evidence | tojson(indent=2) }}</pre>
+</div>
+{% endblock %}

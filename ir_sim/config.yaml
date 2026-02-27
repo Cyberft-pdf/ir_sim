@@ -1,0 +1,26 @@
+app:
+  name: "IR Simulation Tool (MVP)"
+  host: "127.0.0.1"
+  port: 5000
+
+storage:
+  data_dir: "data"
+  events_file: "events.jsonl"
+  incidents_file: "incidents.jsonl"
+  artifacts_dir: "artifacts"
+
+simulation:
+  auth_burst:
+    user: "testuser"
+    ip: "10.0.0.50"
+    count: 20
+    delay_s: 0.03
+  beacon:
+    host: "workstation-1"
+    interval_s: 1.5
+    cycles: 8
+
+detection:
+  auth_burst_threshold: 10
+  beacon_min_events: 6
+  beacon_interval_tolerance: 0.2

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h3>Události (posledních 200)</h3>
+  <p class="muted">Soubor: <code>{{ events_file }}</code></p>
+</div>
+
+<pre>{{ events | tojson(indent=2) }}</pre>
+{% endblock %}
